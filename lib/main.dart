@@ -70,17 +70,20 @@ class SecondScreen extends StatelessWidget {
         ],
       ),
       body:Container(
-          child: Text('Saya BEAN', style: TextStyle(fontSize: 40, color: Colors.white),),
-          color: Colors.red,
+          child: Text('Bean', style: TextStyle(fontSize: 40, color: Colors.white),),
+          width: 450,
+          height: 250,
+          // color: Colors.red,
           padding: EdgeInsets.all(20),
           margin: EdgeInsets.all(100),
           alignment: Alignment.center,
-          // decoration: BoxDecoration(
-          //   borderRadius: BorderRadius.circular(20),
-          //   gradient: LinearGradient(
-          //     colors: [Colors.red, Colors.blue],
-          //     begin: Alignment.topLeft,
-          //     end: Alignment.bottomRight,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              colors: [Colors.red, Colors.blue],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            
             ),
           ),
           ),
