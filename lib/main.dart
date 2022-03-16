@@ -35,10 +35,24 @@ class FirstScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text('Hallo'),
-        
+      body:
+      Column(
+        children: <Widget>[
+        Text("Sistem Operasi", style: TextStyle(fontSize: 50, color: Colors.red), textAlign: TextAlign.center,),
+        // Expanded(child: Column(children: <Widget>[Expanded(child: Text("hallo"))])),
+        Row(
+          children: <Widget>[
+            Expanded(child: Icon(Icons.android, color: Colors.red, size: 50,), flex: 1,),
+            Expanded(child: Text("     ||    ", style: TextStyle(fontSize: 50, color: Colors.red),), flex: 1,),
+            Expanded(child: Icon(Icons.apple,color: Colors.red,size: 50,) ,flex: 1,),
+          ],
         ),
+
+        ],
+        
+      
+        ),
+
        floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -48,6 +62,7 @@ class FirstScreen extends StatelessWidget {
           );
         },
       ),
+      
     );
   }
 }
