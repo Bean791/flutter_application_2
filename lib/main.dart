@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Belajar Flutter',
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -36,7 +36,7 @@ class FirstScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text('Hello World'),
+        child: Text('Hallo'),
         
         ),
        floatingActionButton: FloatingActionButton(
@@ -69,10 +69,24 @@ class SecondScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text('Saya Bean'),
+      body:Container(
+          child: Text('Saya BEAN', style: TextStyle(fontSize: 40, color: Colors.white),),
+          color: Colors.red,
+          padding: EdgeInsets.all(20),
+          margin: EdgeInsets.all(100),
+          alignment: Alignment.center,
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(20),
+          //   gradient: LinearGradient(
+          //     colors: [Colors.red, Colors.blue],
+          //     begin: Alignment.topLeft,
+          //     end: Alignment.bottomRight,
+            ),
+          ),
+          ),
+
         
-        ),
+  
        floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
