@@ -3,62 +3,85 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: Scaffold(
-        body: Center(
-          child: BiggerText(text:"Hello world!"), // Ubah widget Heading ke PerubahanText
+      home: FirstScreen(),// Panggil FirstScreen di sini
+ 
+    );
+  }
+}
+ 
+class FirstScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bean'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            color: Color.fromARGB(255, 255, 255, 255),
+            onPressed: () {
+              Center(
+                child: Text('Search'),
+              );
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Text('Hello World'),
+        
         ),
+       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondScreen()),
+          );
+        },
       ),
     );
   }
 }
- 
-class Heading extends StatelessWidget {
-  final String text;
- 
-  Heading({required this.text});
- 
+class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 24.0,
-        fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Halaman 2'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            color: Color.fromARGB(255, 255, 255, 255),
+            onPressed: () {
+              Center(
+                child: Text('Search'),
+              );
+            },
+          ),
+        ],
       ),
-    );
-  }
-}
- 
-class BiggerText extends StatefulWidget {
-  final String text;
-  const BiggerText({required this.text});
-  @override
-  _BiggerTextState createState() => _BiggerTextState();
-}
-class _BiggerTextState extends State<BiggerText> {
-  double _textSize = 16.0;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(widget.text, style: TextStyle(fontSize: _textSize)),
-        ElevatedButton(
-          child: Text("Perbesar"),
-          onPressed: () {
-            setState(() {
-              _textSize = 32.0;
-            });
-          },
-        )
-      ],
+      body: Center(
+        child: Text('Saya Bean'),
+        
+        ),
+       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondScreen()),
+          );
+        },
+      ),
     );
   }
 }
