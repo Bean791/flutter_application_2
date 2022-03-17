@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: FirstScreen(),// Panggil FirstScreen di sini
+      home: DetailScreen(),// Panggil FirstScreen di sini
  
     );
   }
@@ -35,23 +35,41 @@ class FirstScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:
-      Column(
-        children: <Widget>[
-        Text("Gecko", style: TextStyle(fontSize: 50, color: Colors.red), textAlign: TextAlign.center,),
-        // Expanded(child: Column(children: <Widget>[Expanded(child: Text("hallo"))])),
-        Row(
+      body:Padding(padding: EdgeInsets.all(20.0),
+      child:InkWell(
+      onTap:(){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailScreen()
+      ));
+    },
+      child: Card(
+        child:  Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(child: Icon(Icons.android, color: Colors.red, size: 50,), flex: 1,),
-            Expanded(child: Text("     ||    ", style: TextStyle(fontSize: 50, color: Colors.red),), flex: 1,),
-            Expanded(child: Icon(Icons.apple,color: Colors.red,size: 50,) ,flex: 1,),
+            Expanded(child: Image.network('https://source.unsplash.com/gecko/400x200')),
+            // Expanded(child: Image.network(
+            //   'https://source.unsplashcom/900x500?Home',
+            //   width: 100,
+            //   height: 100,
+            // ), ),
+            Expanded(child: Padding(padding: EdgeInsets.only(left: 4.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text('Gecko', style: TextStyle(fontSize: 20.0),),
+                SizedBox(height: 10.0,),
+                Text('Gecko is a small, agile, and agile-looking gecko. It is a member of the Gecko family.', style: TextStyle(fontSize: 15.0),),
+              ],
+            ),
+            ),),
+
           ],
+          
         ),
 
-        ],
-        
-        
       
+        ),
+        ),
         ),
 
       floatingActionButton: FloatingActionButton(
@@ -59,7 +77,7 @@ class FirstScreen extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailScreen()),
+            MaterialPageRoute(builder: (context) => ResponsivePage()),
           );
         },
       ),
@@ -127,7 +145,13 @@ class DetailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Image.network('https://source.unsplash.com/900x500?Reptile'),
+            Expanded(child: Container(
+              child: Image.network('https://source.unsplash.com/300x300?Home',
+              width: 400,
+              height: 400,
+              ),
+            ),),
+            // Image.network('https://source.unsplash.com/900x500?Reptile'),
             Container(
               height: 100,
                 child: ListView(
@@ -136,19 +160,19 @@ class DetailScreen extends StatelessWidget {
 
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile')),),
+                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplashcom/900x500?Reptile')),),
                                   
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile')),),
+                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
                                   
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile')),),
+                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
                                   
                 Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile')),),
+                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
                                   
               
               ],
@@ -175,6 +199,44 @@ class DetailScreen extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class ResponsivePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth < 600) {
+            return ListView(
+              children: _generateContainers(),
+            );
+          } else if (constraints.maxWidth < 900) {
+            return GridView.count(
+              crossAxisCount: 2,
+              children: _generateContainers(),
+            );
+          } else {
+            return GridView.count(
+              crossAxisCount: 6,
+              children: _generateContainers(),
+            );
+          }
+        },
+      ),
+    );
+  }
+ 
+  List<Widget> _generateContainers() {
+    return List<Widget>.generate(20, (index) {
+      return Container(
+        margin: const EdgeInsets.all(8),
+        color: Colors.blueGrey,
+        height: 200,
+      );
+    });
   }
 }
 
