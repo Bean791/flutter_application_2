@@ -137,38 +137,36 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: <Widget>[
-        Container(margin: EdgeInsets.only(top: 50, left: 40, right: 40),
-        child: Row(
-          
-          children: <Widget>[
-          Column(
-          children: <Widget>[
-            Icon(Icons.calendar_today),
-            SizedBox(height: 8.0),
-            Text('Open Everyday', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black)),
-            Padding(padding: EdgeInsets.all(8.0)),
+      body:Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Write your name here...',
+                labelText: 'Your Name',
+              ),
+              onChanged: (String value) {
+                print(value);
+                
+              },
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: Text('Hello, world!'),
+                      );
+                    });
+              },
+              child: Text('Submit'),
+            )
           ],
         ),
-          Column( children: <Widget>[
-            Icon(Icons.access_time),
-            SizedBox(height: 8.0),
-            Text('Open 24 Hours', textAlign: TextAlign.center, style: TextStyle(fontSize: 12),),
-            Padding(padding: EdgeInsets.all(8.0)),
-          ],),
-          Column( children: <Widget>[
-            Icon(Icons.location_on),
-            SizedBox(height: 8.0),
-            Text('Jl. Kebon Jeruk No.1',  textAlign: TextAlign.center,style: TextStyle(fontSize: 12)),
-            Padding(padding: EdgeInsets.all(8.0)),
-
-          ],)
-            
-            ],
-        ),),
-        
-      ]
-      ,)
+      ),
     );
   }
 }
