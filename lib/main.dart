@@ -137,36 +137,8 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Write your name here...',
-                labelText: 'Your Name',
-              ),
-              onChanged: (String value) {
-                print(value);
-                
-              },
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        content: Text('Hello, world!'),
-                      );
-                    });
-              },
-              child: Text('Submit'),
-            )
-          ],
-        ),
-      ),
+      body:Center(
+        child: Image.network('https://source.unsplash.com/900x500?electronics Component')),
     );
   }
 }
