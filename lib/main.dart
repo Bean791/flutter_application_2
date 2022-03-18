@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: DetailScreen(),// Panggil FirstScreen di sini
+      home: SecondScreen(),// Panggil FirstScreen di sini
  
     );
   }
@@ -45,20 +45,20 @@ class FirstScreen extends StatelessWidget {
         child:  Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(child: Image.network('https://source.unsplash.com/gecko/400x200')),
+            Expanded(child: Image.network('https://source.unsplash.com/Reptils/400x150',
             // Expanded(child: Image.network(
             //   'https://source.unsplashcom/900x500?Home',
-            //   width: 100,
-            //   height: 100,
-            // ), ),
+              width: 100,
+              height: 100,
+            ), ),
             Expanded(child: Padding(padding: EdgeInsets.only(left: 4.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('Gecko', style: TextStyle(fontSize: 20.0),),
+                Text('Reptis', style: TextStyle(fontSize: 20.0),),
                 SizedBox(height: 10.0,),
-                Text('Gecko is a small, agile, and agile-looking gecko. It is a member of the Gecko family.', style: TextStyle(fontSize: 15.0),),
+                Text('Reptil adalah jenis hewan yang unik berdarah dingin', style: TextStyle(fontSize: 15.0),),
               ],
             ),
             ),),
@@ -77,7 +77,7 @@ class FirstScreen extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ResponsivePage()),
+            MaterialPageRoute(builder: (context) => SecondScreen()),
           );
         },
       ),
@@ -91,7 +91,7 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Halaman 2'),
+        title: Text('Home'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
@@ -104,7 +104,13 @@ class SecondScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:Container(
+      body:Padding(padding: EdgeInsets.all(20.0),
+      child: InkWell( onTap:(){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => FirstScreen()
+      ));
+    },
+      
+      child: Container(
           child: Text('Bean', style: TextStyle(fontSize: 40, color: Colors.white),),
           width: 450,
           height: 250,
@@ -121,7 +127,7 @@ class SecondScreen extends StatelessWidget {
             
             ),
           ),
-          ),
+      )),),
 
         
       
@@ -141,99 +147,110 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: (
-        child: SinSafeAreagleChildScrollView(
-          child: Column(
-            children: <Widget>[
-            Expanded(child: Container(
-              child: Image.network('https://source.unsplash.com/900x500?Home')          
-              ),),
-            Image.network('https://source.unsplash.com/900x500?Reptile'),
-            Expanded(child: Container(
-              height: 100,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplashcom/900x500?Reptile')),),
-                                  
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
-                                  
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
-                                  
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplash.com/900x500?Reptile'))),
-                                  
-              
-              ],
-            ),
-            ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Image.network('https://source.unsplash.com/Reptils/400x200'),
+            Container(
+              margin: EdgeInsets.only(top: 16.0),
+              child: Text(
+                'Reptils',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30.0,
+                ),
+              ),
             ),
             Container(
-              child: Padding(padding: const EdgeInsets.all(10),
-              child: Text('Reptil', style: TextStyle(fontSize: 40, color: Colors.black),
-              
-              textAlign: TextAlign.center,),
-              )
-
+              margin: EdgeInsets.symmetric(vertical: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Icon(Icons.food_bank),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'Omnivore',
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Icon(Icons.access_time),
+                      SizedBox(height: 8.0),
+                      Text(
+                        '07:00 - 10:00',
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Icon(Icons.favorite),
+                      SizedBox(height: 8.0),
+                      Text(
+                        'I love Reptiles',
+                        
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
-            Center(child: Text("Ratione temporibus eius impedit harum at. Cupiditate, alias blanditiis! Cupiditate, hic numquam nesciunt commodi aliquid, eum voluptatum delectus qui ratione temporibus tempora rem dolorum adipisci iste dolorem numquam consequatur. Dolores, unde earum. Sit nemo sed possimus dolores tenetur cumque similique a voluptates? Explicabo, soluta molestiae! Ad, assumenda? Sapiente unde facere repellendus quaerat sit similique adipisci debitis perspiciatis laboriosam perferendis quo deserunt, at reiciendis dolorum inventore consequatur explicabo, culpa officiis itaque aliquid facilis praesentium obcaecati! Reiciendis eum praesentium commodi! Modi accusantium ipsam aspernatur qui reprehenderit voluptates dignissimos nulla in nam nisi, unde sit nemo repellendus deleniti officiis soluta, ea itaque aperiam veritatis? A praesentium consequatur, sequi suscipit repellat corrupti vitae quaerat?", style: TextStyle(color: Colors.grey, fontSize: 15, ),),)
-            ],
-          ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Reptil adalah kelompok hewan vertebrata berdarah dingin dan memiliki sisik yang menutupi tubuhnya. Reptilia adalah tetrapoda dan menelurkan telur yang embrionya diselubungi oleh membran amniotik. Sekarang ini mereka menghidupi setiap benua kecuali Antarktika.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ),
+            Container(
+              height: 150,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                          'https://source.unsplash.com/Turtle/400x200'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                          'https://source.unsplash.com/iguana/400x200'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                          'https://source.unsplash.com/snake/400x200'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+              Padding(child: FloatingActionButton(
+              child: Icon(Icons.next_plan_rounded, color: Colors.white, size: 40),
+                onPressed: () {
+              Navigator.push(
+              context,
+            MaterialPageRoute(builder: (context) => SecondScreen()));
+            },
+            ), padding: EdgeInsets.only(top: 15),),
+          ],
         ),
-        
-      ),
-     floatingActionButton: ElevatedButton(
-        child: Text('Kembali ke halaman awal'),
-        onPressed: () {
-          Navigator.pop(context);
-        },
       ),
     );
   }
 }
-
-class ResponsivePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth < 600) {
-            return ListView(
-              children: _generateContainers(),
-            );
-          } else if (constraints.maxWidth < 900) {
-            return GridView.count(
-              crossAxisCount: 2,
-              children: _generateContainers(),
-            );
-          } else {
-            return GridView.count(
-              crossAxisCount: 6,
-              children: _generateContainers(),
-            );
-          }
-        },
-      ),
-    );
-  }
- 
-  List<Widget> _generateContainers() {
-    return List<Widget>.generate(20, (index) {
-      return Container(
-        margin: const EdgeInsets.all(8),
-        color: Colors.blueGrey,
-        height: 200,
-      );
-    });
-  }
-}
-
