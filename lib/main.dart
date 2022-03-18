@@ -141,23 +141,19 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: (
+        child: SinSafeAreagleChildScrollView(
           child: Column(
             children: <Widget>[
             Expanded(child: Container(
-              child: Image.network('https://source.unsplash.com/300x300?Home',
-              width: 400,
-              height: 400,
-              ),
-            ),),
-            // Image.network('https://source.unsplash.com/900x500?Reptile'),
-            Container(
+              child: Image.network('https://source.unsplash.com/900x500?Home')          
+              ),),
+            Image.network('https://source.unsplash.com/900x500?Reptile'),
+            Expanded(child: Container(
               height: 100,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                 children: <Widget>[
-
                 Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: ClipRRect(borderRadius: BorderRadius.circular(15),child: Image.network('https://source.unsplashcom/900x500?Reptile')),),
@@ -176,6 +172,7 @@ class DetailScreen extends StatelessWidget {
                                   
               
               ],
+            ),
             ),
             ),
             Container(
